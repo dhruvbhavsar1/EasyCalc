@@ -64,7 +64,7 @@ It is also a learning project to practice:
 
 ## 🧑‍💻 Author
 
-**Dhruv Bhavsar**
+
 
 GitHub: https://github.com/dhruvbhavsar1
 
