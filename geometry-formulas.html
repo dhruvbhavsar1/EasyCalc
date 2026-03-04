@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Geometry Calculators</title>
+<link rel="stylesheet" href="css/style.css">
+<script src="js/include.js"></script>
+</head>
+<body>
+
+<div id="header"></div>
+
+<main>
+<h2>Geometry Calculators</h2>
+
+<input id="s" placeholder="Square Side">
+<button onclick="sq()">Square Area</button>
+
+<input id="l" placeholder="Length">
+<input id="w" placeholder="Width">
+<button onclick="rect()">Rectangle Area</button>
+
+<input id="r" placeholder="Radius">
+<button onclick="cir()">Circle Area</button>
+
+<div id="resultBox" class="result-box" style="display:none;">
+  <h3 id="resultTitle"></h3>
+  <p id="resultFormula"></p>
+  <p id="resultValue"></p>
+</div>
+<hr>
+
+<h3>Geometry Formulas</h3>
+
+<div class="formula-box">
+  <h4>Area of Square</h4>
+  <p><strong>Formula:</strong> Area = side × side</p>
+</div>
+
+<div class="formula-box">
+  <h4>Area of Rectangle</h4>
+  <p><strong>Formula:</strong> Area = length × width</p>
+</div>
+
+<div class="formula-box">
+  <h4>Area of Circle</h4>
+  <p><strong>Formula:</strong> Area = π × r²</p>
+  <p><small>Where π ≈ 3.14</small></p>
+</div>
+<!-- EXTRA GEOMETRY FORMULAS -->
+
+<div class="formula-box">
+  <h4>Perimeter of Square</h4>
+  <p><strong>Formula:</strong> Perimeter = 4 × side</p>
+</div>
+
+<div class="formula-box">
+  <h4>Perimeter of Rectangle</h4>
+  <p><strong>Formula:</strong> Perimeter = 2 × (length + width)</p>
+</div>
+
+<div class="formula-box">
+  <h4>Circumference of Circle</h4>
+  <p><strong>Formula:</strong> Circumference = 2 × π × r</p>
+  <p><small>Where π ≈ 3.14</small></p>
+</div>
+
+<div class="formula-box">
+  <h4>Area of Triangle</h4>
+  <p><strong>Formula:</strong> Area = ½ × base × height</p>
+</div>
+
+<div class="formula-box">
+  <h4>Area of Parallelogram</h4>
+  <p><strong>Formula:</strong> Area = base × height</p>
+</div>
+
+<div class="formula-box">
+  <h4>Area of Trapezium</h4>
+  <p><strong>Formula:</strong> Area = ½ × (a + b) × h</p>
+  <p><small>a and b are parallel sides</small></p>
+</div>
+
+<div class="formula-box">
+  <h4>Diagonal of Rectangle</h4>
+  <p><strong>Formula:</strong> Diagonal = √(length² + width²)</p>
+</div>
+
+<div class="formula-box">
+  <h4>Volume of Cube</h4>
+  <p><strong>Formula:</strong> Volume = side³</p>
+</div>
+
+<div class="formula-box">
+  <h4>Volume of Cuboid</h4>
+  <p><strong>Formula:</strong> Volume = length × width × height</p>
+</div>
+
+<div class="formula-box">
+  <h4>Volume of Sphere</h4>
+  <p><strong>Formula:</strong> Volume = ⁴⁄₃ × π × r³</p>
+</div>
+
+
+
+</main>
+
+<div id="footer"></div>
+
+<script>
+/* load header & footer */
+loadHTML("header","header.html");
+loadHTML("footer","footer.html");
+
+/* RESULT DISPLAY */
+function showResult(title, formula, value) {
+  document.getElementById("resultBox").style.display = "block";
+  document.getElementById("resultTitle").innerText = title;
+  document.getElementById("resultFormula").innerHTML =
+    "<strong>Formula:</strong> " + formula;
+  document.getElementById("resultValue").innerHTML =
+    "<strong>Result:</strong> " + value;
+}
+
+/* CALCULATIONS */
+function sq() {
+  let s = document.getElementById("s").value;
+  let area = s * s;
+  showResult("Area of Square", "side × side", area + " sq units");
+}
+
+function rect() {
+  let l = document.getElementById("l").value;
+  let w = document.getElementById("w").value;
+  let area = l * w;
+  showResult("Area of Rectangle", "length × width", area + " sq units");
+}
+
+function cir() {
+  let r = document.getElementById("r").value;
+  let area = (3.14 * r * r).toFixed(2);
+  showResult("Area of Circle", "π × r² (π = 3.14)", area + " sq units");
+}
+</script>
+
+</body>
+</html>

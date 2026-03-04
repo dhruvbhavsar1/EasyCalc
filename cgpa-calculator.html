@@ -1,0 +1,182 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>CGPA Calculator</title>
+  <link rel="stylesheet" href="css/style.css">
+  <script src="js/include.js"></script>
+</head>
+<body>
+
+<div id="header"></div>
+
+<main>
+  <h2>CGPA Calculator</h2>
+
+  <!-- INPUT CARD -->
+  <div class="card">
+
+  <div class="grid-3">
+    <select class="grade">
+      <option value="">Grade</option>
+      <option value="AA">AA</option>
+      <option value="AB">AB</option>
+      <option value="BB">BB</option>
+      <option value="BC">BC</option>
+      <option value="CC">CC</option>
+      <option value="CD">CD</option>
+      <option value="DD">DD</option>
+      <option value="FF">FF</option>
+    </select>
+
+    <input type="number" class="credit" placeholder="Credit">
+  </div>
+<button class="outline-btn" onclick="toggleGradeTable()">
+  Show Grade Guide
+</button>
+
+<!-- HIDDEN TABLE -->
+<div id="gradeTable" class="formula-box" style="display:none; margin-top:15px;">
+  <h4>Grade to Grade Point Guide</h4>
+
+  <table class="grade-table">
+    <tr>
+      <th>Grade</th>
+      <th>Grade Point</th>
+    </tr>
+    <tr><td>AA</td><td>10</td></tr>
+    <tr><td>AB</td><td>9</td></tr>
+    <tr><td>BB</td><td>8</td></tr>
+    <tr><td>BC</td><td>7</td></tr>
+    <tr><td>CC</td><td>6</td></tr>
+    <tr><td>CD</td><td>5</td></tr>
+    <tr><td>DD</td><td>4</td></tr>
+    <tr><td>FF</td><td>0</td></tr>
+  </table>
+</div>
+  <button onclick="calculateCGPA()">Calculate CGPA</button>
+
+  <div id="cgpaResult" class="result-box" style="display:none;">
+    <h4>CGPA Result</h4>
+    <p id="cgpaValue"></p>
+  </div>
+
+</div>
+
+
+    
+
+    <!-- RESULT (VISIBLE IMMEDIATELY) -->
+    <div id="cgpaResult" class="result-box" style="display:none;">
+      <h4>CGPA Result</h4>
+      <p><strong>Formula:</strong> CGPA = Total Grade Points ÷ Total Credits</p>
+      <p id="cgpaValue"></p>
+    </div>
+
+  </div>
+
+  <!-- FORMULA SECTION -->
+  <h3>CGPA Formula & Explanation</h3>
+
+  <div class="formula-box">
+    <h4>CGPA Formula</h4>
+    <p><strong>CGPA =</strong> Σ (Grade Point × Credit) ÷ Σ Credits</p>
+  </div>
+
+  <div class="formula-box">
+    <h4>Example</h4>
+    <p>If total grade points = <strong>180</strong></p>
+    <p>Total credits = <strong>20</strong></p>
+    <p><strong>CGPA = 180 ÷ 20 = 9.0</strong></p>
+  </div>
+
+  <div class="formula-box">
+    <h4>Why CGPA is Important?</h4>
+    <ul>
+      <li>Used for academic performance evaluation</li>
+      <li>Required for scholarships & placements</li>
+      <li>Important for higher studies</li>
+    </ul>
+  </div>
+
+</main>
+
+<div id="footer"></div>
+
+<script>
+  loadHTML("header", "header.html");
+  loadHTML("footer", "footer.html");
+
+  function calculateCGPA() {
+    const points = parseFloat(document.getElementById("totalPoints").value);
+    const credits = parseFloat(document.getElementById("totalCredits").value);
+
+    if (!points || !credits || credits === 0) {
+      alert("Please enter valid grade points and credits");
+      return;
+    }
+
+    const cgpa = (points / credits).toFixed(2);
+
+    document.getElementById("cgpaValue").innerText =
+      "Your CGPA is: " + cgpa;
+
+    document.getElementById("cgpaResult").style.display = "block";
+  }
+  function toggleGradeTable() {
+  const table = document.getElementById("gradeTable");
+
+  if (!table) {
+    alert("Grade table not found");
+    return;
+  }
+
+  table.style.display =
+    table.style.display === "none" ? "block" : "none";
+}
+function calculateCGPA() {
+
+  const gradeMap = {
+    AA: 10,
+    AB: 9,
+    BB: 8,
+    BC: 7,
+    CC: 6,
+    CD: 5,
+    DD: 4,
+    FF: 0
+  };
+
+  const grades = document.querySelectorAll(".grade");
+  const credits = document.querySelectorAll(".credit");
+
+  let totalPoints = 0;
+  let totalCredits = 0;
+
+  for (let i = 0; i < grades.length; i++) {
+    const g = grades[i].value;
+    const c = parseFloat(credits[i].value);
+
+    if (g && c > 0) {
+      totalPoints += gradeMap[g] * c;
+      totalCredits += c;
+    }
+  }
+
+  if (totalCredits === 0) {
+    alert("Please enter grade and credit");
+    return;
+  }
+
+  const cgpa = (totalPoints / totalCredits).toFixed(2);
+
+  document.getElementById("cgpaValue").innerHTML =
+    `<strong>Total Credits:</strong> ${totalCredits}<br>
+     <strong>Total Grade Points:</strong> ${totalPoints}<br>
+     <strong>Your CGPA:</strong> ${cgpa}`;
+
+  document.getElementById("cgpaResult").style.display = "block";
+}
+</script>
+
+</body>
+</html>

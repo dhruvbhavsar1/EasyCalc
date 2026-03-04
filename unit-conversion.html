@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Unit Conversion</title>
+<link rel="stylesheet" href="css/style.css">
+<script src="js/include.js"></script>
+</head>
+<body>
+
+<div id="header"></div>
+
+<main>
+<h2>Unit Converters</h2>
+
+<div class="card">
+
+  <!-- Length -->
+  <h3>Length Converter</h3>
+  <input type="number" id="km" placeholder="Enter kilometers">
+  <button onclick="kmToM()">Convert to Meter</button>
+  <p id="kmResult"></p>
+
+  <!-- Weight -->
+  <h3 style="margin-top:20px;">Weight Converter</h3>
+  <input type="number" id="kg" placeholder="Enter kilograms">
+  <button onclick="kgToG()">Convert to Gram</button>
+  <p id="kgResult"></p>
+
+  <!-- Temperature -->
+  <h3 style="margin-top:20px;">Temperature Converter</h3>
+  <input type="number" id="celsius" placeholder="Enter °C">
+  <button onclick="cToF()">Convert to °F</button>
+  <p id="tempResult"></p>
+
+</div>
+
+<!-- STATIC VALUES LIKE GEOMETRY FORMULAS -->
+<h3 style="margin-top:40px;">Basic Unit Conversion Values</h3>
+
+<div class="formula-box">
+  <h4>Length</h4>
+  <p>1 kilometer (km) = <strong>1000 meters (m)</strong></p>
+  <p>1 meter (m) = <strong>100 centimeters (cm)</strong></p>
+</div>
+
+<div class="formula-box">
+  <h4>Weight</h4>
+  <p>1 kilogram (kg) = <strong>1000 grams (g)</strong></p>
+</div>
+
+<div class="formula-box">
+  <h4>Temperature</h4>
+  <p>1 °C = <strong>33.8 °F</strong></p>
+</div>
+
+</main>
+
+<div id="footer"></div>
+
+<script>
+loadHTML("header","header.html");
+loadHTML("footer","footer.html");
+
+function cmM(){ uRes.innerText=cm.value/100+" Meter"; }
+function kgG(){ uRes.innerText=kg.value*1000+" Gram"; }
+function cF(){ uRes.innerText=(c.value*9/5+32)+" °F"; }
+</script>
+
+</body>
+</html>

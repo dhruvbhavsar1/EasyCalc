@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Age Calculator</title>
+<link rel="stylesheet" href="css/style.css">
+<script src="js/include.js"></script>
+</head>
+<body>
+
+<div id="header"></div>
+
+<main>
+<h2>Age Calculator</h2>
+<input type="date" id="dob">
+<button onclick="age()">Calculate</button>
+<h3 id="out"></h3>
+</main>
+
+<div id="footer"></div>
+
+<script>
+loadHTML("header","header.html");
+loadHTML("footer","footer.html");
+
+function age(){
+  let d=new Date(dob.value),t=new Date();
+  let y=t.getFullYear()-d.getFullYear();
+  let m=t.getMonth()-d.getMonth();
+  let da=t.getDate()-d.getDate();
+  if(da<0){m--;da+=30;}
+  if(m<0){y--;m+=12;}
+  out.innerText=y+" Years "+m+" Months "+da+" Days";
+}
+</script>
+
+</body>
+</html>
