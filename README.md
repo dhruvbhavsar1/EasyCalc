@@ -62,11 +62,6 @@ It is also a learning project to practice:
 * GitHub workflow
 * Netlify deployment
 
-## 🧑‍💻 Author
-
-
-
-GitHub: https://github.com/dhruvbhavsar1
 
 ## 📜 License
 
